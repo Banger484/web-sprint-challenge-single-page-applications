@@ -33,18 +33,19 @@ const App = () => {
       toppings: ['banana_peppers', 'green_olives', 'onions', 'pineapple', 'mushrooms'].filter(topping => !!formValues[topping]),
       special_text: formValues.special_text
     }
-    console.log(newPizza)
+    orderPizza(newPizza);
   }
   const orderPizza = newPizza => {
     axios.post('https://reqres.in/api/orders', newPizza)
       .then(res => {
-        console.log(res);
+        setPizzas([res.data, ...pizzas]);
       }).catch(err => {
         console.error(err);
       }).finally(() => {
         setFormValues(initialFormValues)
       })
   }
+  
   return (
     <>
       <div className='header'> 

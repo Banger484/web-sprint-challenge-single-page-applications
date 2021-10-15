@@ -40,9 +40,9 @@ return (
         </div>
         <div>
             <h3>Sauce this thing up!</h3>
-            <input type='radio' value='marinara' name='sauce' onChange={onChange}/>Classic Marinara
-            <input type='radio' value='alfredo' name='sauce' onChange={onChange}/>Creamy Alfredo
-            <input type='radio' value='bbq' name='sauce' onChange={onChange}/>Tangy Barbecue
+            <input type='radio' value='marinara' name='sauce' onChange={onChange} checked={values.sauce === 'marinara'}/>Classic Marinara
+            <input type='radio' value='alfredo' name='sauce' onChange={onChange} checked={values.sauce === 'alfredo'}/>Creamy Alfredo
+            <input type='radio' value='bbq' name='sauce' onChange={onChange} checked={values.sauce === 'bbq'}/>Tangy Barbecue
         </div>
         <div>
             <h3>Load it up with toppings!</h3>
