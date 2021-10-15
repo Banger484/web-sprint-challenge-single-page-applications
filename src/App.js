@@ -16,9 +16,35 @@ const initialFormValues = {
   special_text: ''
 }
 
-const App = () => {
-  const [formValues, setFormValues] = useState();
+const initialPizzas = []
 
+const App = () => {
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [pizzas, setPizzas] = useState(initialPizzas)
+
+  const change = (name, value) => {
+    setFormValues({ ...formValues, [name]: value})
+  }
+  const submit = () => {
+    const newPizza = {
+      name: formValues.name.trim(),
+      size: formValues.size,
+      sauce: formValues.sauce,
+      toppings: ['banana_peppers', 'green_olives', 'onions', 'pineapple', 'mushrooms'].filter(topping => !!formValues[topping]),
+      special_text: formValues.special_text
+    }
+    console.log(newPizza)
+  }
+  const orderPizza = newPizza => {
+    axios.post('https://reqres.in/api/orders', newPizza)
+      .then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.error(err);
+      }).finally(() => {
+        setFormValues(initialFormValues)
+      })
+  }
   return (
     <>
       <div className='header'> 
@@ -34,7 +60,11 @@ const App = () => {
       </div>
       
       <Route path='/pizza'>
-        <PizzaForm />
+        <PizzaForm 
+          values={formValues} 
+          submit={submit} 
+          change={change}
+        />
       </Route>
     </>
   );
