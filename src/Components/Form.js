@@ -3,7 +3,7 @@ import '../App.css'
 
 export default function PizzaForm(props) {
 
-const { values, submit, change } = props
+const { values, submit, change, disabled, errors } = props
 
 const onSubmit = e => {
     e.preventDefault()
@@ -58,7 +58,13 @@ return (
         </div>
         <div>
             <h1>Place your order!</h1>
-            <button id='order-button'>Add to Order!</button>
+            <button id='order-button' disabled={disabled} >Add to Order!</button>
+        </div>
+        <div className='errors'>
+          <div>{errors.name}</div>
+          <div>{errors.sauce}</div>
+          <div>{errors.size}</div>
+          <div>{errors.special_text}</div>
         </div>
     </form>
 
