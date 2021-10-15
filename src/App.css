@@ -6,7 +6,22 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+form {
+  /* border: 1px solid red; */
+  width: 80%;
+  margin: auto;
+  box-shadow: 10px 10px 10px 10px grey;
+  padding: 30px;
+}
+#special-text {
+  width: 40%;
+}
+.header {
+  background-color: #61dafb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
